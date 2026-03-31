@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Movie Search 🎬</h1>
+
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchinput" 
+        placeholder="Enter movie name..."
+      >
+      <button id="searchbtn">Search</button>
+    </div>
+
+    <p id="loading" class="hidden">Loading...</p>
+    <p id="message"></p>
+
+    <div id="moviescontainer"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
