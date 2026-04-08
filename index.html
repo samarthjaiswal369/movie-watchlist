@@ -3,27 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Finder</title>
+  <title>Movie Watchlist 🎬</title>
+  <meta name="description" content="Search movies, view details, and manage your personal watchlist powered by OMDB API.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>Movie Search 🎬</h1>
+    <h1>🎬 Movie Watchlist</h1>
 
-    <div class="search-box">
-      <input 
-        type="text" 
-        id="searchinput" 
-        placeholder="Enter movie name..."
-      >
-      <button id="searchbtn">Search</button>
+
+    <div class="tabs">
+      <button id="tab-search" class="tab-btn active" onclick="switchTab('search')">Search</button>
+      <button id="tab-watchlist" class="tab-btn" onclick="switchTab('watchlist')">
+        My Watchlist <span id="watchlist-count" class="badge">0</span>
+      </button>
     </div>
 
-    <p id="loading" class="hidden">Loading...</p>
-    <p id="message"></p>
 
-    <div id="moviescontainer"></div>
+    <div id="search-tab">
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchinput"
+          placeholder="Search movies, series..."
+          autocomplete="off"
+        >
+
+
+        <select id="type-filter">
+          <option value="">All Types</option>
+          <option value="movie">Movies</option>
+          <option value="series">Series</option>
+          <option value="game">Games</option>
+        </select>
+
+        <button id="searchbtn">Search</button>
+      </div>
+
+      <p id="loading" class="hidden">⏳ Loading...</p>
+      <p id="message"></p>
+
+      <div id="moviescontainer"></div>
+    </div>
+
+
+    <div id="watchlist-tab" class="hidden">
+      <p id="watchlist-empty" class="empty-msg">Your watchlist is empty. Search and add movies! 🍿</p>
+      <div id="watchlistcontainer"></div>
+    </div>
+  </div>
+
+
+  <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+    <div class="modal" id="modal-box">
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+      <div id="modal-content">Loading...</div>
+    </div>
   </div>
 
   <script src="script.js"></script>
